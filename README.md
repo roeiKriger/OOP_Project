@@ -1,5 +1,5 @@
 # OOP_Project
-Academit project in Java course (OOP). 
+Academic project in Java course (OOP). 
 Includes: inheritance, interfaces, data structures, exceptions, Enums, singleton, serialization, JavaFx.
 The singleton class (which contains most of the code) is ZOO.
 
