@@ -5,7 +5,7 @@ import java.io.Serializable;
 import Exceptions.NegativeNumberException;
 import Utils.SnackType;
 
-//father class of food and drink
+//parent class of food and drink
 public class Snack implements Serializable {
 
 	private static int idCounter;	
