@@ -47,10 +47,10 @@ public class Zoo<E> implements Serializable {
 	private HashMap<Integer, SnackBar> bars;
 	private HashMap<ZooEmployee, HashSet<Animal>> animalTreatedByZooEmployee;
 	private HashMap<Visitor, HashSet<Animal>> AnimalVisitsByPeople;
-	private HashMap<Animal, Integer> counterVisitsMammal; //counter the visits to mammal
-	private HashMap<Animal, Integer> counterVisitsBird; //counter the visits to birds
-	private ZooEmployee saveMyUser; //this will save the user that login the system
-	private HashMap<String, Integer> counterSnacks; // this will save String - name of snack and Integer - counter of buying snack
+	private HashMap<Animal, Integer> counterVisitsMammal; //counts the visits to mammal
+	private HashMap<Animal, Integer> counterVisitsBird; //counts the visits to birds
+	private ZooEmployee saveMyUser; //this will save which user logged in to the system right now
+	private HashMap<String, Integer> counterSnacks; // this will save String - name of snack and Integer - counter of snacks bought
 
 	public static Zoo getInstance() //Singleton
 	{
@@ -90,7 +90,6 @@ public class Zoo<E> implements Serializable {
 			FileInputStream fileIn = new FileInputStream("Zoo.ser");  //the name of the file
 			ObjectInputStream in = new ObjectInputStream(fileIn);  //stream to open
 			zoo = (Zoo) in.readObject();
-
 			in.close();  //close stream
 			fileIn.close();  //close file
 			} 
@@ -226,7 +225,7 @@ public class Zoo<E> implements Serializable {
 	public HashMap<Integer, SnackBar> getBars() {
 		return bars;
 	}
-	public ArrayList<String> getSnackBarsNames() //method to get all the bar details we need, with some filter of the less relevant data 
+	public ArrayList<String> getSnackBarsNames() //method to get all the bar details we need, with some filter of the irelevant data 
 	{
 		if(bars!=null)
 		{
@@ -242,7 +241,7 @@ public class Zoo<E> implements Serializable {
 		return null;
 	}
 	
-	///method to get all the birds details we need, with some filter of the less relevant data 
+	///method to get all the birds details we need, with some filter of the irelevant data 
 	public ArrayList<String> getBirdsNames() 
 	{
 		if(birds!=null)
@@ -259,7 +258,7 @@ public class Zoo<E> implements Serializable {
 		return null;
 	}
 	
-	///method to get all the drinks details we need, with some filter of the less relevant data 
+	///method to get all the drinks details we need, with some filter of the irelevant data 
 	public ArrayList<String> getDrink() {
 		if(snacks!=null)
 		{
@@ -315,7 +314,7 @@ public class Zoo<E> implements Serializable {
 		}
 		return null;
 	}
-	///method to get all the food details we need, with some filter of the less relevant data 
+	///method to get all the food details we need, with some filter of the irelevant data 
 	public ArrayList<String> getFood() {
 		if(snacks!=null)
 		{
@@ -534,7 +533,7 @@ public class Zoo<E> implements Serializable {
 	}
 
 	public boolean removeSection(Section oldSection, Section newSection) {
-		
+		// before removing a section I will add all the employees and the anaimals from the old section to the new one		
 		try {
 			if(oldSection == null || newSection == null)
 				return false;
@@ -662,7 +661,7 @@ public class Zoo<E> implements Serializable {
 		}
 		catch (SectionIsFullException e)
 		{
-			//alert to let the user know there is an error in adding
+			//alert to let the user know there is an error in adding a visitor
 			Alert alert = new Alert(AlertType.ERROR, e.getMessage());
 			alert.setHeaderText("Failed adding!");
 			alert.setTitle("Add Visitor");
@@ -739,7 +738,7 @@ public class Zoo<E> implements Serializable {
 		return treatedList;
 	}
 
-	// this method gets SnackBar and returns all the snacks that were requested in instructions
+	// this method gets SnackBar and returns all the snacks that were requested in the instructions
 	public ArrayList<Snack>  findAllSnackByWorker(SnackBar sb){
 		ArrayList<Snack> snacksList= new ArrayList<Snack>();
 		for(Snack s : sb.getSnacks()) 
@@ -799,7 +798,7 @@ public class Zoo<E> implements Serializable {
 		return reptilesList;
 	}
 	
-	// this method returns the possible discounts to all visitors who entered, sorted, no duplicates
+	// this method returns the possible discounts to all visitors who entered, sorted, with no duplicates
 	public TreeMap<Visitor, Double> geAllDiscountAmount()
 	{
 		TreeMap<Visitor, Double> discountTree = new TreeMap<Visitor, Double>(new Comparator<Visitor>(){
@@ -890,7 +889,7 @@ public class Zoo<E> implements Serializable {
 		return (max+1);
 	}
 	
-	//This Method gets userName and password and check if can enter to system
+	//This Method gets userName and password and check if it is valid (exist/correct details)
 	public int checkUser(String userName, String password)
 	{		
 		for(ZooEmployee emp : getEmployees().values())
@@ -903,7 +902,7 @@ public class Zoo<E> implements Serializable {
 		return -1;
 	}
 	
-	//this method gets Person and return true if duplicate visitor and zooEmployee
+	//this method gets Person and return true if it is a duplicate of visitor and zooEmployee
 	public boolean isDuplicate(Person p)
 	{
 		ArrayList<Person> people = new ArrayList<Person>();
