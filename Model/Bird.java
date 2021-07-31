@@ -18,7 +18,7 @@ import javafx.scene.control.Alert.AlertType;
 // extension of animal class, implements interface of animalVisits
 public class Bird extends Animal implements AnimalsVisits,  Serializable
 {
-	//the id here is static, even though when using serialization you can not remember the var. therefore I created special method for it in Zoo
+	//the id here is static, even though when using serialization you can not 'remember' the static id variable. Therefore I created special method for it in Zoo
 	private static int idCounter;
 	private boolean canFly;
 	private boolean canTakePic;
@@ -95,7 +95,7 @@ public class Bird extends Animal implements AnimalsVisits,  Serializable
 						Visitor v= (Visitor)p;
 						if(!Zoo.getInstance().getAnimalVisitsByPeople().containsKey(v)) // if visitor exsit
 						{
-							goToCounter();//This method up the counter of the animal
+							goToCounter();//This method increase the counter of the animal
 							Zoo.getInstance().getAnimalVisitsByPeople().put(v,new HashSet<Animal>());
 							((HashSet<Animal>) Zoo.getInstance().getAnimalVisitsByPeople().get(v)).add(this);
 						}
@@ -103,14 +103,14 @@ public class Bird extends Animal implements AnimalsVisits,  Serializable
 						{
 							HashSet<Animal> animals = (HashSet<Animal>) (Zoo.getInstance().getAnimalVisitsByPeople().get(v));
 							animals.add(this);
-							goToCounter(); //up the counter of the animal
+							goToCounter(); //increase the counter of the animal
 						}		
 				}
 		
 		return false;	
 	}	
 	
-	//This method up the counter of the animal
+	//This method increase the counter of the animal
 	private void goToCounter()
 	{
 		if(Zoo.getInstance().getCounterVisitsBird().containsKey(this))
