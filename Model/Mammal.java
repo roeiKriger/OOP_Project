@@ -93,7 +93,7 @@ public class Mammal extends Animal implements AnimalsVisits, Serializable {
 					Visitor v= (Visitor)p;
 					if(!Zoo.getInstance().getAnimalVisitsByPeople().containsKey(v)) 
 					{
-						goToCounter(); //up the counter of the animal
+						goToCounter(); //increase the counter of the animal
 						Zoo.getInstance().getAnimalVisitsByPeople().put(v,new HashSet<Animal>());
 						((HashSet<Animal>) Zoo.getInstance().getAnimalVisitsByPeople().get(v)).add(this);		
 					}
@@ -102,7 +102,7 @@ public class Mammal extends Animal implements AnimalsVisits, Serializable {
 						//the visitor exist but animals not
 						HashSet<Animal> animals = (HashSet<Animal>) (Zoo.getInstance().getAnimalVisitsByPeople().get(v));
 						animals.add(this);
-						goToCounter(); //up the counter of the animal
+						goToCounter(); //increase the counter of the animal
 					}
 	
 				}
@@ -110,7 +110,7 @@ public class Mammal extends Animal implements AnimalsVisits, Serializable {
 			return false;
 		}
 	
-	//This method up the counter of the animal
+	//This method increase the counter of the animal
 	private void goToCounter()
 	{
 		if(Zoo.getInstance().getCounterVisitsMammal().containsKey(this))
