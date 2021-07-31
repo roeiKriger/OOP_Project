@@ -7,7 +7,7 @@ import java.util.Date;
 import Utils.AnimalFood;
 import Utils.Gender;
 
-// this is the father class for bird, reptile and mammal, comparator by bDay.
+// this is the parent class for bird, reptile and mammal, comparator by bDay.
 public abstract class Animal implements Comparable<Animal>, Serializable {
 	
 	private int id;
