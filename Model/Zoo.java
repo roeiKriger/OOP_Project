@@ -70,12 +70,12 @@ public class Zoo<E> implements Serializable {
 		this.sections = new HashMap<Integer, Section>();
 		this.snacks = new HashMap<Integer,Snack>();
 		this.bars = new HashMap<Integer, SnackBar>();
-		this.animalTreatedByZooEmployee= new HashMap<ZooEmployee, HashSet<Animal>>();
+		this.animalTreatedByZooEmployee = new HashMap<ZooEmployee, HashSet<Animal>>();
 		this.AnimalVisitsByPeople = new HashMap<Visitor, HashSet<Animal>>();
 		this.saveMyUser = new ZooEmployee(0);
 		this.counterSnacks = new HashMap<String, Integer>();
 		this.counterVisitsMammal = new HashMap<Animal, Integer>();
-		this.counterVisitsBird=new HashMap<Animal, Integer>();
+		this.counterVisitsBird = new HashMap<Animal, Integer>();
 	}
 	public ZooEmployee getSaveMyUser() {
 		return saveMyUser;
@@ -269,7 +269,7 @@ public class Zoo<E> implements Serializable {
 				{
 					Drink d = (Drink)sn;
 					String str=d.getSnackName();
-					str+= ", id: "+d.getId()+", price: "+d.getPrice()+"  bar name: "+d.getBar().getBarName()+", is fattening "+d.isFattening()+", iceCube "+d.isIceCube()+", sprinkel " +d.isSprinkel()+", straw "+d.isStraw();
+					str += ", id: "+d.getId()+", price: "+d.getPrice()+"  bar name: "+d.getBar().getBarName()+", is fattening "+d.isFattening()+", iceCube "+d.isIceCube()+", sprinkel " +d.isSprinkel()+", straw "+d.isStraw();
 					arr.add(str);
 				}
 			}
@@ -325,7 +325,7 @@ public class Zoo<E> implements Serializable {
 				{
 					Food d= (Food)sn;
 					String str=d.getSnackName();
-					str+= ", id: "+d.getId()+", price: "+d.getPrice()+"  bar name: "+d.getBar().getBarName()+", is fattening "+d.isFattening()+", plate "+d.isPlate()+", gluten free "+d.isGlutenFree()+", spicy "+d.isSpaciy();
+					str += ", id: "+d.getId()+", price: "+d.getPrice()+"  bar name: "+d.getBar().getBarName()+", is fattening "+d.isFattening()+", plate "+d.isPlate()+", gluten free "+d.isGlutenFree()+", spicy "+d.isSpaciy();
 					arr.add(str);
 				}
 			}
@@ -753,7 +753,7 @@ public class Zoo<E> implements Serializable {
 			}
 			else if(s instanceof Food) 
 			{
-				Food f= (Food)s;
+				Food f = (Food)s;
 				if(f.isSpaciy() && !f.isPlate()) 
 				{
 					snacksList.add(f);
@@ -774,7 +774,7 @@ public class Zoo<E> implements Serializable {
 	public ArrayList<Reptile> reptilesSleepAtSeasson()
 	{
 		ArrayList<Reptile> reptilesList = new ArrayList<Reptile>();
-		if(getReptiles() !=null) {
+		if(getReptiles() != null) {
 
 			for(Reptile r : getReptiles().values()) 
 			{
